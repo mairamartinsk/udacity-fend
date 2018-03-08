@@ -1,5 +1,24 @@
+/*************************************/
+/* CSS VARIABLES */
+/*************************************/
+
+:root {
+  --lightshade: #f9f9f9; /* IE fallback: white */
+  --maincolor: #b04a2c; /* IE fallback: indianred */
+  --darkshade: #28252c; /* IE fallback: black */
+}
+
+/*************************************/
+/* BASE SETTINGS */
+/*************************************/
+
 html {
   box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
 }
 
 *,
@@ -8,10 +27,160 @@ html {
   box-sizing: inherit;
 }
 
+ul,
+li {
+  list-style: none;
+  padding-left: 0;
+}
+
+/*************************************/
+/* GLOBAL STYLES */
+/*************************************/
+
 body {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-family: 'Muli', sans-serif;
+  font-weight: 400;
   line-height: 1.6;
-  color: #666;
-  background-color: #fff;
+  color: var(--darkshade);
+  background-color: var(--lightshade);
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Muli', sans-serif;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--maincolor);
+  color: var(--darkshade);
+  transition: all 0.3s;
+  padding: 0 0.35em;
+}
+
+a:hover {
+  background-color: var(--maincolor);
+  color: var(--lightshade);
+}
+
+section {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+/*************************************/
+/* NAV STYLES */
+/*************************************/
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  /* width: 60%; */
+  margin: 1em auto;
+}
+
+.nav__link {
+  color: var(--darkshade);
+  text-transform: uppercase;
+  border-bottom: 0;
+  font-size: 0.8em;
+  min-width: 48px;
+  min-height: 24px;
+}
+
+/*************************************/
+/* HEADER STYLES */
+/*************************************/
+
+.hero__image {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--lightshade);
+  background-image: url(../img/mairak_notext.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero__text {
+  margin-top: 20vh;
+}
+
+.site-title {
+  font-size: 8vw;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.site-description {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 4vw;
+  margin: 0;
+}
+
+/*************************************/
+/* PROJECTS STYLES */
+/*************************************/
+
+.grid__item {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.project__image {
+  max-width: 100%;
+}
+
+/*************************************/
+/* SKILLS STYLES */
+/*************************************/
+
+/*************************************/
+/* FOOTER STYLES */
+/*************************************/
+
+footer {
+  padding: 6vw 2rem;
+  background-color: var(--darkshade);
+  text-align: center;
+  color: var(--lightshade);
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+}
+
+.social__link {
+  font-family: 'Muli', sans-serif;
+  font-weight: 400;
+  padding: 0.325em;
+  color: var(--lightshade);
+  transition: all 0.3s;
+  margin-right: 0.5em;
+}
+
+.social__link:last-of-type {
+  margin-right: 0;
+}
+
+.social__link:hover {
+  background-color: var(--lightshade);
+  color: var(--maincolor);
 }

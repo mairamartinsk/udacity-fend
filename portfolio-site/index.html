@@ -6,28 +6,39 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Maíra Martins K - Front End Web Developer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400i" rel="stylesheet">
   <link rel="stylesheet" href="./css/main.css">
-</head>
+  <link rel="stylesheet" href="./css/grid.css">
+  </head>
 <body>
 
-  <header>
-    <h1 class="site-title"><a href="/">Maíra Martins K</a></h1>
-    <p class="site-description">Front End Web Developer</p>
+  <nav class="nav">
+    <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+    <li class="nav__item"><a href="#skills" class="nav__link">Resumé</a></li>
+    <li class="nav__item"><a href="https://github.com/mairamartinsk" class="nav__link">Github</a></li>
+    <li class="nav__item"><a href="https://dev.mairamartins.com" class="nav__link">Blog</a></li>
+  </nav>
+
+  <header class="hero__image">
+    <div class="hero__text">
+      <h1 class="site-title">Maíra Martins K</h1>
+      <p class="site-description">Web Developer & Adventurer</p>
+    </div>
   </header>
 
-  <div class="slider">
-    <li class="slider__item">hi!</li>
-  </div>
-
   <main>
-    <section>
+    <section id="projects">
       <h2 class="section-title">Projects</h2>
-      <hr>
       <ul class="grid">
         <li class="grid__item">
-          <img src="" alt="" class="project__image">
+          <img src="./img/ilya-pavlov-87438-unsplash.jpg" alt="Placeholder Image" class="project__image">
+          <h3 class="project__title">Title</h3>
+          <a href="#" class="project__link">Github</a>
+          <a href="#" class="project__link">Live Demo</a>
+        </li>
+        <li class="grid__item">
+          <img src="./img/ilya-pavlov-87438-unsplash.jpg" alt="Placeholder Image" class="project__image">
           <h3 class="project__title">Title</h3>
           <a href="#" class="project__link">Github</a>
           <a href="#" class="project__link">Live Demo</a>
@@ -35,20 +46,19 @@
       </ul>
     </section>
 
-    <section>
+    <section id="skills">
       <h2 class="section-title">Skills & Experience</h2>
-      <hr>
       <p class="skills__intro">I am good with this, this and that</p>
       <p class="skills__list"><span>Tech: </span>this, this, that.</p>
     </section>
   </main>
 
   <footer>
-    <p>Made with HTML, CSS and love by Maíra Martins K. Get in touch via mairamartinsk</p>
-    <div class="social-icons">
-      <a href="#" class="social">Github</a>
-      <a href="#" class="social">Twitter</a>
-      <a href="#" class="social">Linkedin</a>
+    <p>Made with HTML, CSS and love by Maíra Martins K.</p>
+    <div class="social">
+      <a href="#" class="social__link">Github</a>
+      <a href="#" class="social__link">Twitter</a>
+      <a href="#" class="social__link">Linkedin</a>
     </div>
   </footer>
 
