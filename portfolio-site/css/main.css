@@ -3,9 +3,10 @@
 /*************************************/
 
 :root {
-  --lightshade: #f9f9f9; /* IE fallback: white */
-  --maincolor: #b04a2c; /* IE fallback: indianred */
-  --darkshade: #28252c; /* IE fallback: black */
+  --yellow: #fed900;
+  --white: #fff;
+  --lightgray: #f7f7f7;
+  --black: #000;
 }
 
 /*************************************/
@@ -13,17 +14,20 @@
 /*************************************/
 
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body,
 html {
   height: 100%;
+  width: 100%;
 }
 
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -38,100 +42,175 @@ li {
 /*************************************/
 
 body {
-  font-family: 'Muli', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  line-height: 1.6;
-  color: var(--darkshade);
-  background-color: var(--lightshade);
+  line-height: 1.5;
+  color: var(--black);
+  background-color: var(--white);
 }
 
 h1,
 h2,
 h3 {
-  font-family: 'Muli', sans-serif;
-  font-weight: 900;
-  line-height: 1.2;
+  font-weight: 700;
   margin: 0;
   padding: 0;
 }
 
-a {
-  display: inline-block;
-  text-decoration: none;
-  border-bottom: 1px dotted var(--maincolor);
-  color: var(--darkshade);
-  transition: all 0.3s;
-  padding: 0 0.35em;
+p {
+  padding: 0.5em 0;
 }
 
-a:hover {
-  background-color: var(--maincolor);
-  color: var(--lightshade);
-}
-
-section {
-  width: 90vw;
-  margin: 0 auto;
-  padding: 1em;
-}
-
-/*************************************/
-/* NAV STYLES */
-/*************************************/
-
-.nav {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
-  /* width: 60%; */
-  margin: 1em auto;
-}
-
-.nav__link {
-  color: var(--darkshade);
-  text-transform: uppercase;
-  border-bottom: 0;
-  font-size: 0.8em;
-  min-width: 48px;
-  min-height: 24px;
+.parallax {
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*************************************/
 /* HEADER STYLES */
 /*************************************/
 
-.hero__image {
-  width: 100vw;
-  height: 80vh;
+.header {
+  padding: 10px 0 20px;
+  background-color: var(--lightgray);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5em;
+  text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: var(--lightshade);
-  background-image: url(../img/mairak_notext.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  text-decoration: none;
 }
 
-.hero__text {
-  margin-top: 20vh;
+.logo--M {
+  background-color: var(--yellow);
+  color: var(--black);
+  padding: 5px;
 }
 
-.site-title {
-  font-size: 8vw;
-  letter-spacing: 0;
+.logo--K {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 5px;
+}
+
+.image--header {
+  background-image: url(../img/norway-coast.jpg);
+  max-width: 100%;
+  height: 60vh;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero__title {
+  font-family: "Libre Baskerville", serif;
+  color: var(--lightgray);
+  font-size: 3em;
+  margin-top: 100px;
+  opacity: 0;
+  animation: 1s slidefade 1s forwards;
+}
+
+@keyframes slidefade {
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+/*************************************/
+/* NAV STYLES */
+/*************************************/
+
+.navbar {
+  transition: all 0.3s;
+  display: none;
+}
+
+.nav__link {
+  color: var(--black);
+  font-size: 1em;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.nav__link:hover {
+  color: var(--yellow);
+}
+
+/*************************************/
+/* MAIN STYLES */
+/*************************************/
+
+.section {
+  padding: 3em;
+  font-size: 0.9rem;
+}
+
+.section__title {
+  font-size: 2.5em;
+  margin-bottom: 1.2em;
+}
+
+.section__link {
   text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 3;
 }
 
-.site-description {
-  font-family: 'Libre Baskerville', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 4vw;
-  margin: 0;
+.section__link::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 48px;
+  background: var(--yellow);
+  transition: all 150ms ease-out;
+  bottom: 0;
+  left: 0;
+}
+
+.section--colored .section__link::after {
+  background: var(--white);
+}
+
+.section__link:hover::after {
+  width: 100px;
+}
+
+.section--colored {
+  background-color: var(--yellow);
+}
+
+.section__title::after {
+  content: "";
+  display: block;
+  width: 68px;
+  height: 8px;
+  background: var(--yellow);
+  margin-top: 7px;
+  margin-left: -33px;
+}
+
+.section--colored .section__title::after {
+  background: var(--white);
+}
+
+.link--inline {
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 2px solid var(--lightgray);
 }
 
 /*************************************/
@@ -139,48 +218,137 @@ section {
 /*************************************/
 
 .grid__item {
-  margin-bottom: 2em;
-  text-align: center;
+  position: relative;
+  padding: 0;
+}
+
+.project__link {
+  text-decoration: none;
 }
 
 .project__image {
   max-width: 100%;
+  display: block;
+}
+
+.project__title,
+.project__desc {
+  color: var(--black);
+}
+
+/*************************************/
+/* QUOTE STYLES */
+/*************************************/
+
+.quote {
+  font-family: "Libre Baskerville", serif;
+  font-size: 2.2em;
 }
 
 /*************************************/
 /* SKILLS STYLES */
 /*************************************/
 
+.image--skills {
+  background-image: url(../img/birds-sky.jpg);
+  max-width: 100%;
+  height: 60vh;
+}
+
+/*************************************/
+/* GALLERY STYLES */
+/*************************************/
+
+.gallery {
+  display: none;
+}
+
+.gallery__item {
+  max-width: 100%;
+}
+
 /*************************************/
 /* FOOTER STYLES */
 /*************************************/
 
-footer {
-  padding: 6vw 2rem;
-  background-color: var(--darkshade);
+.footer {
+  background-color: var(--black);
+  color: var(--lightgray);
   text-align: center;
-  color: var(--lightshade);
+  padding: 1em;
 }
 
-.social {
+.footer__text {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+}
+
+.footer__social {
   display: flex;
-  justify-content: center;
+  width: 200px;
+  margin: 0 auto;
+  justify-content: space-around;
+  text-align: center;
 }
 
 .social__link {
-  font-family: 'Muli', sans-serif;
-  font-weight: 400;
-  padding: 0.325em;
-  color: var(--lightshade);
-  transition: all 0.3s;
-  margin-right: 0.5em;
-}
-
-.social__link:last-of-type {
-  margin-right: 0;
+  font-size: 1.5em;
+  color: var(--lightgray);
 }
 
 .social__link:hover {
-  background-color: var(--lightshade);
-  color: var(--maincolor);
+  color: var(--yellow);
+}
+
+/*************************************/
+/* MEDIA QUERIES */
+/*************************************/
+
+@media screen and (min-width: 600px) {
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    margin: 2em 0 1em;
+  }
+
+  .project__overlay {
+    background-color: rgba(254, 217, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    padding: 0.75em 1em;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .grid__item:hover .project__overlay {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-device-width: 1024px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .section:not(#projects) {
+    padding: 3em 10em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section:not(#projects) {
+    padding: 3em 20em;
+  }
 }
