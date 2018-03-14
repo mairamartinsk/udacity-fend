@@ -1,15 +1,4 @@
 /*************************************/
-/* CSS VARIABLES */
-/*************************************/
-
-:root {
-  --yellow: #fed900;
-  --white: #fff;
-  --lightgray: #f7f7f7;
-  --black: #000;
-}
-
-/*************************************/
 /* BASE SETTINGS */
 /*************************************/
 
@@ -45,8 +34,8 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--black);
-  background-color: var(--white);
+  color: #000;
+  background-color: #fff;
 }
 
 h1,
@@ -74,7 +63,7 @@ p {
 
 .header {
   padding: 10px 0 20px;
-  background-color: var(--lightgray);
+  background-color: #f7f7f7;
 }
 
 .logo {
@@ -88,14 +77,14 @@ p {
 }
 
 .logo--M {
-  background-color: var(--yellow);
-  color: var(--black);
+  background-color: #fed900;
+  color: #000;
   padding: 5px;
 }
 
 .logo--K {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: #000;
+  color: #fff;
   padding: 5px;
 }
 
@@ -112,7 +101,7 @@ p {
 }
 .hero__title {
   font-family: "Libre Baskerville", serif;
-  color: var(--lightgray);
+  color: #f7f7f7;
   font-size: 3em;
   margin-top: 100px;
   opacity: 0;
@@ -131,12 +120,14 @@ p {
 /*************************************/
 
 .navbar {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 0 1em;
   transition: all 0.3s;
-  display: none;
 }
 
 .nav__link {
-  color: var(--black);
+  color: #000;
   font-size: 1em;
   font-weight: 700;
   text-decoration: none;
@@ -144,7 +135,7 @@ p {
 }
 
 .nav__link:hover {
-  color: var(--yellow);
+  color: #fed900;
 }
 
 /*************************************/
@@ -164,7 +155,7 @@ p {
 .section__link {
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--black);
+  color: #000;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 3;
@@ -173,16 +164,16 @@ p {
 .section__link::after {
   content: "";
   display: block;
-  height: 3px;
+  height: 2px;
   width: 48px;
-  background: var(--yellow);
+  background: #fed900;
   transition: all 150ms ease-out;
   bottom: 0;
   left: 0;
 }
 
 .section--colored .section__link::after {
-  background: var(--white);
+  background: #f7f7f7;
 }
 
 .section__link:hover::after {
@@ -190,7 +181,7 @@ p {
 }
 
 .section--colored {
-  background-color: var(--yellow);
+  background-color: #fed900;
 }
 
 .section__title::after {
@@ -198,19 +189,27 @@ p {
   display: block;
   width: 68px;
   height: 8px;
-  background: var(--yellow);
+  background: #fed900;
   margin-top: 7px;
   margin-left: -33px;
 }
 
 .section--colored .section__title::after {
-  background: var(--white);
+  background: #fff;
 }
 
 .link--inline {
-  color: var(--black);
+  color: #000;
   text-decoration: none;
-  border-bottom: 2px solid var(--lightgray);
+  display: inline-block;
+}
+
+.link--inline::after {
+  content: none;
+}
+
+.link--inline:hover {
+  color: #f7f7f7;
 }
 
 /*************************************/
@@ -233,7 +232,7 @@ p {
 
 .project__title,
 .project__desc {
-  color: var(--black);
+  color: #000;
 }
 
 /*************************************/
@@ -259,10 +258,6 @@ p {
 /* GALLERY STYLES */
 /*************************************/
 
-.gallery {
-  display: none;
-}
-
 .gallery__item {
   max-width: 100%;
 }
@@ -272,8 +267,8 @@ p {
 /*************************************/
 
 .footer {
-  background-color: var(--black);
-  color: var(--lightgray);
+  background-color: #000;
+  color: #f7f7f7;
   text-align: center;
   padding: 1em;
 }
@@ -294,24 +289,24 @@ p {
 
 .social__link {
   font-size: 1.5em;
-  color: var(--lightgray);
+  color: #f7f7f7;
 }
 
 .social__link:hover {
-  color: var(--yellow);
+  color: #fed900;
 }
 
 /*************************************/
 /* MEDIA QUERIES */
 /*************************************/
 
-@media screen and (min-width: 600px) {
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    margin: 2em 0 1em;
+@media screen and (max-width: 599px) {
+  .quote {
+    font-size: 1.5em;
   }
+}
 
+@media screen and (min-width: 600px) {
   .project__overlay {
     background-color: rgba(254, 217, 0, 0.9);
     width: 100%;
@@ -350,5 +345,27 @@ p {
 @media screen and (min-width: 1200px) {
   .section:not(#projects) {
     padding: 3em 20em;
+  }
+}
+
+@media screen and (-ms-high-contrast: active),
+  screen and (-ms-high-contrast: none) {
+  /* IE10+ specific styles go here */
+  .grid,
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .grid__item {
+    width: calc(100% / 3);
+  }
+
+  .gallery__item {
+    width: calc(100% / 4);
+  }
+
+  .vertical {
+    display: none;
   }
 }
