@@ -1,0 +1,19 @@
+
+$lightShade: #fcfaf7; // Vista White
+$lightAccent: #e84545; // Cinnabar
+$mainColor: #903749; // Solid Pink
+$darkAccent: #53354a; // Eggplant
+$darkShade: #2b2e4a; // Martinique
+
+
+@mixin boxShadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}

@@ -1,0 +1,31 @@
+/*
+---------------------------------------
+#BASEELEMENTS
+---------------------------------------
+*/
+
+
+body {
+  text-align: center;
+}
+
+table,
+tr,
+td {
+    border: 1px solid $darkShade;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+input[type=number] {
+    width: 4em;
+    margin-right: 10px;
+    color: $darkAccent;
+}
+
+strong {
+  color: $darkAccent;
+}
