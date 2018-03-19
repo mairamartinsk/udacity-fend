@@ -45,3 +45,18 @@ function shuffle(array) {
 
   return array;
 }
+
+// Restart game with new icons
+function restartGame() {
+  let cards = document.querySelectorAll(".card");
+  // Clear current icon from card
+  for (card of cards) {
+    card.innerHTML = "";
+  }
+  generateCards();
+}
+// Set up DOM and Restart button event listeners
+document.addEventListener("DOMContentLoaded", generateCards);
+
+const restart = document.querySelector(".restart");
+restart.addEventListener("click", restartGame);
