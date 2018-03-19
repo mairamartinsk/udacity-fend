@@ -55,8 +55,37 @@ function restartGame() {
   }
   generateCards();
 }
+
+// "Turn" card and display its symbol
+function displayCardSymbol(event) {
+  let openCards = [];
+  let cardClicked = event.target;
+
+  if (!cardClicked.classList.contains("show")) {
+    cardClicked.classList.add("show");
+    openCards += cardClicked;
+  }
+}
+
 // Set up DOM and Restart button event listeners
 document.addEventListener("DOMContentLoaded", generateCards);
 
 const restart = document.querySelector(".restart");
 restart.addEventListener("click", restartGame);
+
+// Set up Card event listeners
+const showCard = [...document.querySelectorAll(".card")];
+for (let i = 0; i < showCard.length; i++) {
+  showCard[i].addEventListener("click", displayCardSymbol);
+}
+
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  - if the list already has another card, check to see if the two cards match
+ *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
