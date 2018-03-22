@@ -1,11 +1,15 @@
 // Global variables
+const matchCards = document.getElementsByClassName("match");
 const restart = document.querySelector(".restart");
 const moveText = document.querySelector(".moves");
 const stars = document.querySelector(".stars");
 const deck = document.querySelector(".deck");
+let time = setInterval(timer, 1000);
 let starCounter = 3;
 let openCards = [];
 let moves = 0;
+let minutes = 0;
+let seconds = 0;
 
 // Randomly add icons to cards
 function generateCards() {
@@ -45,6 +49,7 @@ function generateCards() {
   }
   deck.appendChild(fragment);
   starRating();
+  timer();
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -70,6 +75,8 @@ function restartGame() {
   moveText.innerHTML = "";
   starCounter = 3;
   moves = 0;
+  minutes = 0;
+  seconds = 0;
   generateCards();
 }
 
@@ -90,6 +97,7 @@ function displayCardSymbol(event) {
     if (openLimit === 1) {
       if (openCards[0].classList.value === openCards[1].classList.value) {
         match();
+        gameWin();
       } else {
         setTimeout(noMatch, 500);
       }
@@ -128,10 +136,11 @@ function noMatch() {
   openCards = [];
 }
 
+// Update starCounter variable according to number of moves
 function starRating() {
-  if (moves > 8 && moves < 15) {
+  if (moves > 12 && moves < 17) {
     starCounter = 2;
-  } else if (moves > 16 && moves < 23) {
+  } else if (moves > 18 && moves < 24) {
     starCounter = 1;
   } else if (moves > 24) {
     starCounter = 0;
@@ -139,11 +148,30 @@ function starRating() {
   showStars(starCounter);
 }
 
+// Generate html to display stars
 function showStars(num) {
   const starHtml = '<li class="fa fa-star"></li>';
   stars.innerHTML = "";
   for (let i = 0; i < num; i++) {
     stars.innerHTML += starHtml;
+  }
+}
+
+// Time counter
+function timer() {
+  seconds++;
+  if (seconds === 60) {
+    minutes++;
+    seconds = 0;
+  }
+  console.log(minutes, seconds);
+}
+
+//  Game win
+function gameWin() {
+  if (matchCards.length == 16) {
+    clearInterval(time);
+    let timeStamp = `${minutes}:${seconds}`;
   }
 }
 
