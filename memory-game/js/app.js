@@ -1,4 +1,6 @@
-// Set list of openCards as global variable
+// Global variable
+const deck = document.querySelector(".deck");
+const restart = document.querySelector(".restart");
 let openCards = [];
 
 // Randomly add icons to cards
@@ -30,7 +32,6 @@ function generateCards() {
   randomCards = shuffle(randomCards);
 
   // Loop through each card and generate its HTML
-  const deck = document.querySelector(".deck");
   const fragment = document.createDocumentFragment();
 
   for (card in cards) {
@@ -60,7 +61,6 @@ function shuffle(array) {
 
 // Restart game with new cards
 function restartGame() {
-  const deck = document.querySelector(".deck");
   deck.innerHTML = "";
   generateCards();
 }
@@ -107,10 +107,7 @@ function noMatch() {
 
 // Set up DOM and Restart button event listeners
 document.addEventListener("DOMContentLoaded", generateCards);
-
-const restart = document.querySelector(".restart");
 restart.addEventListener("click", restartGame);
 
 // Set up Card event listeners
-const deck = document.querySelector(".deck");
 deck.addEventListener("click", displayCardSymbol);
