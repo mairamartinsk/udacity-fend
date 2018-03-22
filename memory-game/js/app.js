@@ -1,7 +1,9 @@
 // Global variables
 const deck = document.querySelector(".deck");
 const restart = document.querySelector(".restart");
+const moveText = document.querySelector(".moves");
 let openCards = [];
+let moves = 0;
 
 // Randomly add icons to cards
 function generateCards() {
@@ -62,6 +64,8 @@ function shuffle(array) {
 // Restart game with new cards
 function restartGame() {
   deck.innerHTML = "";
+  moveText.innerHTML = "";
+  moves = 0;
   generateCards();
 }
 
@@ -85,7 +89,21 @@ function displayCardSymbol(event) {
       } else {
         setTimeout(noMatch, 500);
       }
+      // If two cards are open, count as one move
+      moves++;
+      moveCounter();
     }
+  }
+}
+
+// Keep track of moves and display counter
+function moveCounter() {
+  if (moves === 0) {
+    moveText.innerHTML = "";
+  } else if (moves === 1) {
+    moveText.innerHTML = moves + " move";
+  } else {
+    moveText.innerHTML = moves + " moves";
   }
 }
 
@@ -103,11 +121,6 @@ function noMatch() {
   openCards[0].classList.remove("show", "open");
   openCards[1].classList.remove("show", "open");
   openCards = [];
-}
-
-function moveCounter(num) {
-  // if two cards are open, count as one move
-  // keep track of moves
 }
 
 // Set up DOM and Restart button event listeners
