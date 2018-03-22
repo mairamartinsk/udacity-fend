@@ -1,32 +1,41 @@
 // Randomly add icons to cards
 function generateCards() {
   // List of all different icons to display
-  const icon = [
-    "fa-diamond",
-    "fa-paper-plane-o",
-    "fa-anchor",
-    "fa-bolt",
-    "fa-cube",
-    "fa-leaf",
-    "fa-bicycle",
-    "fa-bomb"
+  const cards = [
+    { name: "diamond", cardType: "fa-diamond" },
+    { name: "plane", cardType: "fa-paper-plane-o" },
+    { name: "anchor", cardType: "fa-anchor" },
+    { name: "bolt", cardType: "fa-bolt" },
+    { name: "cube", cardType: "fa-cube" },
+    { name: "leaf", cardType: "fa-leaf" },
+    { name: "bike", cardType: "fa-bicycle" },
+    { name: "bomb", cardType: "fa-bomb" },
+    { name: "diamond", cardType: "fa-diamond" },
+    { name: "plane", cardType: "fa-paper-plane-o" },
+    { name: "anchor", cardType: "fa-anchor" },
+    { name: "bolt", cardType: "fa-bolt" },
+    { name: "cube", cardType: "fa-cube" },
+    { name: "leaf", cardType: "fa-leaf" },
+    { name: "bike", cardType: "fa-bicycle" },
+    { name: "bomb", cardType: "fa-bomb" }
   ];
 
   // Shuffle list of icons calling Shuffle function
-  let iconsOne = shuffle(icon);
-  let iconsTwo = shuffle(icon);
-  let randomIcons = iconsOne.concat(iconsTwo);
-  randomIcons = shuffle(randomIcons);
+  let iconsOne = shuffle(cards);
+  let iconsTwo = shuffle(cards);
+  let randomCards = iconsOne.concat(iconsTwo);
+  randomCards = shuffle(randomCards);
 
   // Loop through each card and generate its HTML
-  let cards = [...document.querySelectorAll(".card")];
+  const deck = document.querySelector(".deck");
+  const fragment = document.createDocumentFragment();
 
-  for (let i = 0; i < cards.length; i++) {
-    const randomCard = document.createElement("i");
-    randomCard.setAttribute("class", "fa");
-    randomCard.classList.add(randomIcons[i]);
-    cards[i].appendChild(randomCard);
+  for (card in cards) {
+    const randomCard = document.createElement("li");
+    randomCard.setAttribute("class", `card fa ${cards[card].cardType}`);
+    fragment.appendChild(randomCard);
   }
+  deck.appendChild(fragment);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
