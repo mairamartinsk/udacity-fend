@@ -1,27 +1,31 @@
-// Global variable
-const deck = document.querySelector(".deck");
+// Global variables
 const restart = document.querySelector(".restart");
+const moveText = document.querySelector(".moves");
+const stars = document.querySelector(".stars");
+const deck = document.querySelector(".deck");
+let starCounter = 3;
 let openCards = [];
+let moves = 0;
 
 // Randomly add icons to cards
 function generateCards() {
   // List of all different icons to display
   const cards = [
-    { name: "diamond", cardType: "fa-diamond" },
     { name: "plane", cardType: "fa-paper-plane-o" },
+    { name: "diamond", cardType: "fa-diamond" },
     { name: "anchor", cardType: "fa-anchor" },
+    { name: "bike", cardType: "fa-bicycle" },
     { name: "bolt", cardType: "fa-bolt" },
     { name: "cube", cardType: "fa-cube" },
     { name: "leaf", cardType: "fa-leaf" },
-    { name: "bike", cardType: "fa-bicycle" },
     { name: "bomb", cardType: "fa-bomb" },
-    { name: "diamond", cardType: "fa-diamond" },
     { name: "plane", cardType: "fa-paper-plane-o" },
+    { name: "diamond", cardType: "fa-diamond" },
     { name: "anchor", cardType: "fa-anchor" },
+    { name: "bike", cardType: "fa-bicycle" },
     { name: "bolt", cardType: "fa-bolt" },
     { name: "cube", cardType: "fa-cube" },
     { name: "leaf", cardType: "fa-leaf" },
-    { name: "bike", cardType: "fa-bicycle" },
     { name: "bomb", cardType: "fa-bomb" }
   ];
 
@@ -40,6 +44,7 @@ function generateCards() {
     fragment.appendChild(randomCard);
   }
   deck.appendChild(fragment);
+  starRating();
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -62,6 +67,9 @@ function shuffle(array) {
 // Restart game with new cards
 function restartGame() {
   deck.innerHTML = "";
+  moveText.innerHTML = "";
+  starCounter = 3;
+  moves = 0;
   generateCards();
 }
 
@@ -85,7 +93,22 @@ function displayCardSymbol(event) {
       } else {
         setTimeout(noMatch, 500);
       }
+      // If two cards are open, count as one move
+      moves++;
+      moveCounter();
+      starRating();
     }
+  }
+}
+
+// Keep track of moves and display counter
+function moveCounter() {
+  if (moves === 0) {
+    moveText.innerHTML = "";
+  } else if (moves === 1) {
+    moveText.innerHTML = moves + " move";
+  } else {
+    moveText.innerHTML = moves + " moves";
   }
 }
 
@@ -103,6 +126,25 @@ function noMatch() {
   openCards[0].classList.remove("show", "open");
   openCards[1].classList.remove("show", "open");
   openCards = [];
+}
+
+function starRating() {
+  if (moves > 8 && moves < 15) {
+    starCounter = 2;
+  } else if (moves > 16 && moves < 23) {
+    starCounter = 1;
+  } else if (moves > 24) {
+    starCounter = 0;
+  }
+  showStars(starCounter);
+}
+
+function showStars(num) {
+  const starHtml = '<li class="fa fa-star"></li>';
+  stars.innerHTML = "";
+  for (let i = 0; i < num; i++) {
+    stars.innerHTML += starHtml;
+  }
 }
 
 // Set up DOM and Restart button event listeners
