@@ -1,4 +1,4 @@
-// Global variable
+// Global variables
 const deck = document.querySelector(".deck");
 const restart = document.querySelector(".restart");
 let openCards = [];
@@ -103,6 +103,11 @@ function noMatch() {
   openCards[0].classList.remove("show", "open");
   openCards[1].classList.remove("show", "open");
   openCards = [];
+}
+
+function moveCounter(num) {
+  // if two cards are open, count as one move
+  // keep track of moves
 }
 
 // Set up DOM and Restart button event listeners
