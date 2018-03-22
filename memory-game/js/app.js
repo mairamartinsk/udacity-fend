@@ -89,6 +89,22 @@ function displayCardSymbol(event) {
   }
 }
 
+// If cards match
+function match() {
+  openCards[0].classList.add("match");
+  openCards[1].classList.add("match");
+  openCards[0].classList.remove("show", "open");
+  openCards[1].classList.remove("show", "open");
+  openCards = [];
+}
+
+// If cards don't match
+function noMatch() {
+  openCards[0].classList.remove("show", "open");
+  openCards[1].classList.remove("show", "open");
+  openCards = [];
+}
+
 // Set up DOM and Restart button event listeners
 document.addEventListener("DOMContentLoaded", generateCards);
 
