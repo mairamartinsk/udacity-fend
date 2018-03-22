@@ -55,24 +55,34 @@ function shuffle(array) {
   return array;
 }
 
-// Restart game with new icons
+// Restart game with new cards
 function restartGame() {
-  let cards = document.querySelectorAll(".card");
-  // Clear current icon from card
-  for (card of cards) {
-    card.innerHTML = "";
-  }
+  const deck = document.querySelector(".deck");
+  deck.innerHTML = "";
   generateCards();
 }
 
 // "Turn" card and display its symbol
 function displayCardSymbol(event) {
-  let openCards = [];
-  let cardClicked = event.target;
+  const cardClicked = event.target;
 
-  if (!cardClicked.classList.contains("show")) {
-    cardClicked.classList.add("show");
-    openCards += cardClicked;
+  if (cardClicked.tagName === "LI") {
+    const openLimit = openCards.length;
+
+    // Check that no more than 2 cards are open
+    if (openLimit < 2) {
+      cardClicked.classList.add("show", "open");
+      openCards.push(cardClicked);
+    }
+
+    // Compare cards type
+    if (openLimit === 1) {
+      if (openCards[0].classList.value === openCards[1].classList.value) {
+        match();
+      } else {
+        setTimeout(noMatch, 500);
+      }
+    }
   }
 }
 
@@ -83,18 +93,5 @@ const restart = document.querySelector(".restart");
 restart.addEventListener("click", restartGame);
 
 // Set up Card event listeners
-const showCard = [...document.querySelectorAll(".card")];
-for (let i = 0; i < showCard.length; i++) {
-  showCard[i].addEventListener("click", displayCardSymbol);
-}
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+const deck = document.querySelector(".deck");
+deck.addEventListener("click", displayCardSymbol);
