@@ -18,7 +18,7 @@ body {
 
 body {
   background: #ffffff url("../img/cubes.png"); /* Background pattern from Subtle Patterns */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #1f363d;
 }
 
@@ -30,7 +30,6 @@ body {
 }
 
 h1 {
-  font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
 
@@ -50,7 +49,7 @@ h1 {
   min-height: 680px;
   border-radius: 5px;
   background: linear-gradient(560deg, #cfe0c3 0%, #70a9a1 100%);
-  box-shadow: 6px 8px 15px 0 rgba(46, 55, 73, 0.3);
+  box-shadow: 6px 8px 10px 0 rgba(46, 55, 73, 0.2);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
