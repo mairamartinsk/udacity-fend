@@ -1,3 +1,6 @@
+// Set list of openCards as global variable
+let openCards = [];
+
 // Randomly add icons to cards
 function generateCards() {
   // List of all different icons to display
