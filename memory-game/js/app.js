@@ -1,8 +1,10 @@
 // Global variables
 const matchCards = document.getElementsByClassName("match");
+const jsRestart = document.querySelector(".js-restart");
 const restart = document.querySelector(".restart");
 const moveText = document.querySelector(".moves");
 const stars = document.querySelector(".stars");
+const modal = document.querySelector(".modal");
 const deck = document.querySelector(".deck");
 let time = setInterval(timer, 1000);
 let starCounter = 3;
@@ -164,20 +166,43 @@ function timer() {
     minutes++;
     seconds = 0;
   }
-  console.log(minutes, seconds);
 }
 
 //  Game win
 function gameWin() {
   if (matchCards.length == 16) {
     clearInterval(time);
-    let timeStamp = `${minutes}:${seconds}`;
+    modal.style.display = "block";
+    modalGameInfo();
   }
 }
+
+// Generate pop-up Game Info
+function modalGameInfo() {
+  const jsStars = document.querySelector(".js-stars");
+  const jsMoves = document.querySelector(".js-moves");
+  const jsTime = document.querySelector(".js-time");
+
+  jsStars.innerHTML = stars.innerHTML;
+  jsMoves.innerHTML = moveText.innerHTML;
+  jsTime.innerHTML = `${minutes}:${seconds}`;
+}
+
+// If user clicks outside pop-up, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 // Set up DOM and Restart button event listeners
 document.addEventListener("DOMContentLoaded", generateCards);
 restart.addEventListener("click", restartGame);
+
+jsRestart.addEventListener("click", function() {
+  modal.style.display = "none";
+  restartGame();
+});
 
 // Set up Card event listeners
 deck.addEventListener("click", displayCardSymbol);
