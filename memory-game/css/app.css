@@ -36,7 +36,7 @@ h1 {
 .credit {
   margin: 0 auto;
   font-size: 0.8rem;
-  color: rgba(31, 54, 61, 0.3);
+  color: rgba(31, 54, 61, 0.6);
   text-align: center;
 }
 
@@ -113,4 +113,86 @@ h1 {
 .score-panel .restart {
   float: right;
   cursor: pointer;
+}
+
+/*
+ * Modal Pop Up
+ */
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  text-align: center;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 0.25em;
+  background: linear-gradient(560deg, #cfe0c3 0%, #70a9a1 100%);
+  color: white;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+
+.modal-body {
+  padding: 1em 0.5em;
+  font-size: 1.2em;
+}
+
+.modal-footer {
+  padding: 1em;
+  background: linear-gradient(560deg, #cfe0c3 0%, #70a9a1 100%);
+  color: white;
+}
+
+.js-stars {
+  font-size: 36px;
+  color: orange;
+}
+
+.js-time,
+.js-moves {
+  font-weight: bold;
+  color: #70a9a1;
+}
+
+.js-restart {
+  padding: 10px 15px;
+  background-color: #cfe0c3;
+  text-transform: uppercase;
+  margin: 1em;
+  color: #1f363d;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(46, 55, 73, 0.2);
 }
