@@ -48,6 +48,7 @@ function generateCards() {
     const randomCard = document.createElement("li");
     randomCard.setAttribute("class", `card fa ${cards[card].cardType}`);
     fragment.appendChild(randomCard);
+{
   }
   deck.appendChild(fragment);
   starRating();
@@ -206,3 +207,4 @@ jsRestart.addEventListener("click", function() {
 
 // Set up Card event listeners
 deck.addEventListener("click", displayCardSymbol);
+}
