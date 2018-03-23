@@ -1,3 +1,7 @@
+/* ********************************* */
+/* RESETS */
+/* ********************************* */
+
 html {
   box-sizing: border-box;
 }
@@ -16,9 +20,14 @@ body {
   padding: 0;
 }
 
+/* ********************************* */
+/* GLOBAL STYLES */
+/* ********************************* */
+
 body {
   background: #ffffff url("../img/cubes.png"); /* Background pattern from Subtle Patterns */
   font-family: "Montserrat", sans-serif;
+  font-weight: 200;
   color: #1f363d;
 }
 
@@ -30,32 +39,34 @@ body {
 }
 
 h1 {
-  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3em;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .credit {
   margin: 0 auto;
-  font-size: 0.8rem;
-  color: rgba(31, 54, 61, 0.6);
+  font-size: 0.9rem;
+  color: #1f363d;
   text-align: center;
 }
 
-/*
- * Styles for the deck of cards
- */
+/* ********************************* */
+/* CARDS STYLES */
+/* ********************************* */
 
 .deck {
-  width: 660px;
-  min-height: 680px;
   border-radius: 5px;
   background: linear-gradient(560deg, #cfe0c3 0%, #70a9a1 100%);
   box-shadow: 6px 8px 10px 0 rgba(46, 55, 73, 0.2);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 3em;
-  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 1em;
+  padding: 2em;
 }
 
 .deck .card {
@@ -88,9 +99,9 @@ h1 {
   font-size: 45px;
 }
 
-/*
- * Styles for the Score Panel
- */
+/* ********************************* */
+/* SCORE PANEL STYLES */
+/* ********************************* */
 
 .score-panel {
   text-align: left;
@@ -115,9 +126,9 @@ h1 {
   cursor: pointer;
 }
 
-/*
- * Modal Pop Up
- */
+/* ********************************* */
+/* MODAL POP UP STYLES */
+/* ********************************* */
 
 .modal {
   display: none;
