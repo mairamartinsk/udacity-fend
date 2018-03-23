@@ -207,3 +207,44 @@ h1 {
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(46, 55, 73, 0.2);
 }
+
+/* ********************************* */
+/* MEDIA QUERIES */
+/* ********************************* */
+
+@media screen and (max-width: 700px) {
+  .deck .card {
+    height: 100px;
+    width: 100px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .deck .card {
+    height: 85px;
+    width: 85px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .deck {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
+  .deck .card {
+    height: 100px;
+    width: 100px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .score-panel {
+    width: 250px;
+  }
+}
