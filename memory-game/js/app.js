@@ -22,8 +22,8 @@
     starCounter = 3;
     modal.style.display = "none";
     deck.innerHTML = "";
-    moveText.innerHTML = "";
     clock.innerHTML = "00:00";
+    moveText.innerHTML = moves + ` moves <img src="./img/moves.png">`;
     time = setInterval(timer, 1000);
     generateCards();
     timer();
@@ -33,22 +33,22 @@
   function generateCards() {
     // List of all different icons to display
     const cards = [
-      "fa-paper-plane-o",
-      "fa-diamond",
-      "fa-anchor",
-      "fa-bicycle",
-      "fa-bolt",
-      "fa-cube",
-      "fa-leaf",
-      "fa-bomb",
-      "fa-paper-plane-o",
-      "fa-diamond",
-      "fa-anchor",
-      "fa-bicycle",
-      "fa-bolt",
-      "fa-cube",
-      "fa-leaf",
-      "fa-bomb"
+      "01-money.png",
+      "02-key.png",
+      "03-potion.png",
+      "04-mushroom.png",
+      "05-ghost.png",
+      "06-pacman.png",
+      "07-aliens.png",
+      "08-ghost.png",
+      "01-money.png",
+      "02-key.png",
+      "03-potion.png",
+      "04-mushroom.png",
+      "05-ghost.png",
+      "06-pacman.png",
+      "07-aliens.png",
+      "08-ghost.png"
     ];
 
     // Shuffle list of icons calling Shuffle function
@@ -62,7 +62,8 @@
 
     for (card in cards) {
       const randomCard = document.createElement("li");
-      randomCard.setAttribute("class", `card fa ${cards[card]}`);
+      randomCard.innerHTML = `<img src="./img/${cards[card]}">`;
+      randomCard.classList.add("card");
       fragment.appendChild(randomCard);
     }
     deck.appendChild(fragment);
@@ -101,7 +102,7 @@
 
       // Compare cards type
       if (openLimit === 1) {
-        if (openCards[0].classList.value === openCards[1].classList.value) {
+        if (openCards[0].children[0].src === openCards[1].children[0].src) {
           match();
           gameWin();
         } else {
@@ -118,12 +119,13 @@
   // Keep track of moves and display counter
   function moveCounter() {
     if (moves === 0) {
-      moveText.innerHTML = "";
+      moveText.innerText = moves + " moves";
     } else if (moves === 1) {
-      moveText.innerHTML = moves + " move";
+      moveText.innerText = moves + " move";
     } else {
-      moveText.innerHTML = moves + " moves";
+      moveText.innerText = moves + " moves";
     }
+    moveText.innerHTML += ` <img src="./img/moves.png">`;
   }
 
   // If cards match
@@ -144,9 +146,9 @@
 
   // Update starCounter variable according to number of moves
   function starRating() {
-    if (moves > 12 && moves < 17) {
+    if (moves > 15 && moves < 19) {
       starCounter = 2;
-    } else if (moves > 18 && moves < 24) {
+    } else if (moves > 20 && moves < 24) {
       starCounter = 1;
     } else if (moves > 24) {
       starCounter = 0;
@@ -156,7 +158,7 @@
 
   // Generate html to display stars
   function showStars(num) {
-    const starHtml = '<li class="fa fa-star"></li>';
+    const starHtml = '<img src="./img/stars.png">';
     stars.innerHTML = "";
     for (let i = 0; i < num; i++) {
       stars.innerHTML += starHtml;
@@ -210,7 +212,7 @@
 
     jsTime.innerHTML = `${minutes}:${seconds}`;
     jsStars.innerHTML = stars.innerHTML;
-    jsMoves.innerHTML = moveText.innerHTML;
+    jsMoves.innerHTML = moveText.textContent;
   }
 
   // If user clicks outside pop-up, close it
