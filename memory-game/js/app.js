@@ -4,6 +4,7 @@
   const restart = document.querySelector(".restart");
   const moveText = document.querySelector(".moves");
   const stars = document.querySelector(".stars");
+  const clock = document.querySelector(".clock");
   const modal = document.querySelector(".modal");
   const deck = document.querySelector(".deck");
   let openCards = [];
@@ -22,6 +23,7 @@
     modal.style.display = "none";
     deck.innerHTML = "";
     moveText.innerHTML = "";
+    clock.innerHTML = "00:00";
     time = setInterval(timer, 1000);
     generateCards();
     timer();
@@ -169,6 +171,8 @@
       minutes++;
       seconds = 0;
     }
+
+    showClock();
   }
 
   function endTimer() {
@@ -180,6 +184,11 @@
     if (seconds < 10) {
       seconds = "0" + seconds;
     }
+  }
+
+  function showClock() {
+    formatTime();
+    clock.innerHTML = `${minutes}:${seconds} <img src="./img/timer.png">`;
   }
 
   //  Game win
