@@ -5,25 +5,24 @@
     <title>Memory Card Matching Game</title>
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,700" rel="stylesheet prefetch">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet prefetch">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <h1>The Memory Game</h1>
+        <header class="header">
+            <h1><img src="./img/memory.png" alt="The Memory Game" class="logo"></h1>
+            <div class="score-panel">
+              <ul class="stars"></ul>
+              <div class="moves"></div>
+              <div class="clock"></div>
+              <div class="restart">
+                restart
+                <i class="fa fa-repeat"></i>
+              </div>
+            </div>
         </header>
-
-        <section class="score-panel">
-        	<ul class="stars"></ul>
-
-        	<span class="moves"></span>
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
-        </section>
 
         <ul class="deck"></ul>
     </div>
