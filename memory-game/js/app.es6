@@ -1,17 +1,17 @@
-"use strict";
+{
+  const matchCards = document.getElementsByClassName("match");
+  const jsRestart = document.querySelector(".js-restart");
+  const restart = document.querySelector(".restart");
+  const moveText = document.querySelector(".moves");
+  const stars = document.querySelector(".stars");
+  const clock = document.querySelector(".clock");
+  const modal = document.querySelector(".modal");
+  const deck = document.querySelector(".deck");
+  let openCards = [];
 
-(function() {
-  var matchCards = document.getElementsByClassName("match");
-  var jsRestart = document.querySelector(".js-restart");
-  var restart = document.querySelector(".restart");
-  var moveText = document.querySelector(".moves");
-  var stars = document.querySelector(".stars");
-  var clock = document.querySelector(".clock");
-  var modal = document.querySelector(".modal");
-  var deck = document.querySelector(".deck");
-  var openCards = [];
+  let moves, minutes, seconds, starCounter, time;
 
-  var moves, minutes, seconds, starCounter, time;
+  init();
 
   // Start game
   function init() {
@@ -23,7 +23,7 @@
     modal.style.display = "none";
     deck.innerHTML = "";
     clock.innerHTML = "00:00";
-    moveText.innerHTML = moves + ' moves <img src="./img/moves.png">';
+    moveText.innerHTML = moves + ` moves <img src="./img/moves.png">`;
     time = setInterval(timer, 1000);
     generateCards();
     timer();
@@ -32,7 +32,7 @@
   // Randomly add icons to cards
   function generateCards() {
     // List of all different icons to display
-    var cards = [
+    const cards = [
       "01-money.png",
       "02-key.png",
       "03-potion.png",
@@ -52,17 +52,17 @@
     ];
 
     // Shuffle list of icons calling Shuffle function
-    var iconsOne = shuffle(cards);
-    var iconsTwo = shuffle(cards);
-    var randomCards = iconsOne.concat(iconsTwo);
+    let iconsOne = shuffle(cards);
+    let iconsTwo = shuffle(cards);
+    let randomCards = iconsOne.concat(iconsTwo);
     randomCards = shuffle(randomCards);
 
     // Loop through each card and generate its HTML
-    var fragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
 
-    for (var i = 0; i < cards.length; i++) {
-      var randomCard = document.createElement("li");
-      randomCard.innerHTML = '<img src="./img/' + cards[i] + '">';
+    for (card in cards) {
+      const randomCard = document.createElement("li");
+      randomCard.innerHTML = `<img src="./img/${cards[card]}">`;
       randomCard.classList.add("card");
       fragment.appendChild(randomCard);
     }
@@ -72,7 +72,7 @@
 
   // Shuffle function from http://stackoverflow.com/a/2450976
   function shuffle(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
       temporaryValue,
       randomIndex;
 
@@ -88,11 +88,11 @@
   }
 
   // "Turn" card and display its symbol
-  var displayCardSymbol = function displayCardSymbol(event) {
-    var cardClicked = event.target;
+  function displayCardSymbol(event) {
+    const cardClicked = event.target;
 
     if (cardClicked.tagName === "LI") {
-      var openLimit = openCards.length;
+      const openLimit = openCards.length;
 
       // Check that no more than 2 cards are open
       if (openLimit < 2) {
@@ -114,7 +114,7 @@
         starRating();
       }
     }
-  };
+  }
 
   // Keep track of moves and display counter
   function moveCounter() {
@@ -125,7 +125,7 @@
     } else {
       moveText.innerText = moves + " moves";
     }
-    moveText.innerHTML += ' <img src="./img/moves.png">';
+    moveText.innerHTML += ` <img src="./img/moves.png">`;
   }
 
   // If cards match
@@ -158,9 +158,9 @@
 
   // Generate html to display stars
   function showStars(num) {
-    var starHtml = '<img src="./img/stars.png">';
+    const starHtml = '<img src="./img/stars.png">';
     stars.innerHTML = "";
-    for (var i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
       stars.innerHTML += starHtml;
     }
   }
@@ -190,7 +190,7 @@
 
   function showClock() {
     formatTime();
-    clock.innerHTML = minutes + ":" + seconds + ' <img src="./img/timer.png">';
+    clock.innerHTML = `${minutes}:${seconds} <img src="./img/timer.png">`;
   }
 
   //  Game win
@@ -204,18 +204,16 @@
 
   // Generate pop-up Game Info
   function modalGameInfo() {
-    var jsStars = document.querySelector(".js-stars");
-    var jsMoves = document.querySelector(".js-moves");
-    var jsTime = document.querySelector(".js-time");
+    const jsStars = document.querySelector(".js-stars");
+    const jsMoves = document.querySelector(".js-moves");
+    const jsTime = document.querySelector(".js-time");
 
     formatTime();
 
-    jsTime.innerHTML = minutes + ":" + seconds;
+    jsTime.innerHTML = `${minutes}:${seconds}`;
     jsStars.innerHTML = stars.innerHTML;
     jsMoves.innerHTML = moveText.textContent;
   }
-
-  init();
 
   // If user clicks outside pop-up, close it
   window.onclick = function(event) {
@@ -231,4 +229,4 @@
 
   // Set up Card event listeners
   deck.addEventListener("click", displayCardSymbol);
-})();
+}
