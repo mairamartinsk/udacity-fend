@@ -3,12 +3,14 @@
 /* ********************************* */
 
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -47,12 +49,6 @@ body {
   background-attachment: fixed;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  margin: 2em 10vw;
-}
-
 .credit {
   margin: 0 auto;
   font-size: 0.9rem;
@@ -65,17 +61,34 @@ body {
 /* ********************************* */
 
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
 }
 
 .score-panel {
   margin-top: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   background-color: #030a39;
   border-radius: 15px;
@@ -113,13 +126,7 @@ body {
 /* ********************************* */
 
 .deck {
-  margin: 0;
   border-radius: 5px;
-  display: grid;
-  grid-template-columns: repeat(4, 150px);
-  grid-template-rows: repeat(4, 150px);
-  grid-gap: 0.5em;
-  grid-auto-flow: dense;
 }
 
 .deck .card {
@@ -128,10 +135,17 @@ body {
   background-image: url(../img/card-deck.png);
   background-size: cover;
   border-radius: 15px;
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -145,9 +159,8 @@ body {
 }
 
 .deck .card.open {
-  transform: rotateY(0);
-  background: #b33008;
   cursor: default;
+  background: #b33008;
 }
 
 .deck .card.show img {
@@ -186,13 +199,27 @@ body {
   padding: 0;
   border: 1px solid #030a39;
   width: 65%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  -webkit-animation-name: animatetop;
   animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
   animation-duration: 0.4s;
   text-align: center;
 }
 
 /* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
 @keyframes animatetop {
   from {
     top: -300px;
@@ -245,6 +272,7 @@ body {
   margin: 1em;
   color: #ffd700;
   border: 0;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(46, 55, 73, 0.2);
   box-shadow: 0 2px 5px 0 rgba(46, 55, 73, 0.2);
 }
 
@@ -313,12 +341,15 @@ body {
 
 @media screen and (max-width: 1200px) {
   .container {
+    -ms-grid-columns: 1fr 3fr;
     grid-template-columns: 1fr 3fr;
     margin: 1em 2vw;
   }
 
   .deck {
+    -ms-grid-columns: (125px) [4];
     grid-template-columns: repeat(4, 125px);
+    -ms-grid-rows: (125px) [4];
     grid-template-rows: repeat(4, 125px);
   }
 }
@@ -331,15 +362,22 @@ body {
 
 @media screen and (max-width: 870px) {
   .container {
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }
 
   .header {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 
   .score-panel {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin: 2em 0;
   }
@@ -347,14 +385,18 @@ body {
   .deck {
     margin: 0 auto;
     padding: 0;
+    -ms-grid-columns: (150px) [4];
     grid-template-columns: repeat(4, 150px);
+    -ms-grid-rows: (150px) [4];
     grid-template-rows: repeat(4, 150px);
   }
 }
 
 @media screen and (max-width: 700px) {
   .deck {
+    -ms-grid-columns: (minmax(50px, 125px)) [4];
     grid-template-columns: repeat(4, minmax(50px, 125px));
+    -ms-grid-rows: (minmax(50px, 125px)) [4];
     grid-template-rows: repeat(4, minmax(50px, 125px));
   }
 }
