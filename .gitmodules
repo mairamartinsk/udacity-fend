@@ -1,3 +1,6 @@
 [submodule "memory-game"]
 	path = memory-game
 	url = https://github.com/mairamartinsk/memory-game
+[submodule "pixel-art-maker"]
+	path = pixel-art-maker
+	url = https://github.com/mairamartinsk/pixel-art-maker.git
